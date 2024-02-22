@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    string textToType = "Hello Player. Welcome to 2499 spaceship..." +
-                        "We are now suffering from Char invaders attack." +
-                        "Show us your ability to destroy all the Char invaders!";
+    string textToType = "Greetings, Pilot! Welcome aboard the 2499 starship. " +
+                        "As we traverse the cosmos, we find ourselves besieged by relentless Char invaders. " +
+                        "It is now your moment to shine, to demonstrate your prowess in the art of combat, and to vanquish these intergalactic foes. " +
+                        "Ready your weapons and prepare for battle!";
     private TMP_Text description;
 
     void Awake()
