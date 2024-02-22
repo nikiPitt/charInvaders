@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 {
     //Class Enemy instance fields
     public TMP_Text e;
+    [SerializeField] public int point;
     [SerializeField] private string type;
     [SerializeField] private int speed;
     

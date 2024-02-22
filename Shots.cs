@@ -23,7 +23,7 @@ public class Shots : MonoBehaviour
 
     private void toString()
     {
-        Debug.Log("Shot type: " + shotType + " Speed: " + speed + " Power: " + power);
+        //Debug.Log("Shot type: " + shotType + " Speed: " + speed + " Power: " + power);
     }
 
     private void Move()

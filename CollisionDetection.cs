@@ -1,23 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
-    [SerializeField] public int power;
     private Player player;
+    [SerializeField] AudioSource audioSource;
     private void Start()
     {
-         player = GameObject.FindObjectOfType<Player>();
+        player = GameObject.FindObjectOfType<Player>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) 
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
-            UpdateScore();
+            Debug.Log("Play audio effect");
+            audioSource.Play();
         }
     }
     
@@ -25,24 +27,9 @@ public class CollisionDetection : MonoBehaviour
     { 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Enemy e = collision.gameObject.GetComponent<Enemy>();
+            player.UpdateScore(e);
             Destroy(collision.gameObject);
-            UpdateScore();
         }
-        
-    }
-    
-    // private void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         Debug.Log("Shot!");
-    //         Destroy(collision.gameObject);
-    //     }
-    // }
-    
-    void UpdateScore()
-    {
-        player.GetPoints(power);
-        //Debug.Log(player.GetComponent<SimpleCharacterController>().score);
     }
 }

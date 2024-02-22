@@ -3,10 +3,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int score = 0;
+    private int _score = 0;
 
-    public void GetPoints(int p)
+    public void UpdateScore(Enemy e)
     {
-        score += p;
+        _score += e.point;
+        Debug.Log(_score);
     }
+
+    public int GetScore()
+    {
+        return _score;
+    }
+    
 }
