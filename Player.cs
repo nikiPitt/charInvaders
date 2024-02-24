@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -15,5 +16,17 @@ public class Player : MonoBehaviour
     {
         return _score;
     }
-    
+
+    private void finishGame()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    private void Update()
+    {
+        if (_score >= 1000)
+        {
+            finishGame();
+        }
+    }
 }

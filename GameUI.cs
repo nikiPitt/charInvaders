@@ -1,23 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class GameUI : MonoBehaviour
 {
-    private TMP_Text playerScore;
+    private TMP_Text playerScoreText;
     private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerScore = GetComponent<TMP_Text>();
+        playerScoreText = GetComponent<TMP_Text>();
+        Debug.Log(playerScoreText);
         player = FindObjectOfType<Player>();
+        UpdateScoreUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerScore.text = player.GetScore().ToString();
+        if (player)
+        {
+            UpdateScoreUI();
+        }
     }
-}
+
+    void UpdateScoreUI()
+    {
+        if (player && playerScoreText)
+        {
+            playerScoreText.text = player.GetScore().ToString();
+        }
+    }
+}   
