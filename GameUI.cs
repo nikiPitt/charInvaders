@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class GameUI : MonoBehaviour
 {
-    private TMP_Text playerScoreText;
+    public TMP_Text playerScoreText;
+    public TMP_Text playTimeText;
     private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerScoreText = GetComponent<TMP_Text>();
-        Debug.Log(playerScoreText);
         player = FindObjectOfType<Player>();
         UpdateScoreUI();
+        UpdateTimeUI();
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class GameUI : MonoBehaviour
         if (player)
         {
             UpdateScoreUI();
+            UpdateTimeUI();
         }
     }
 
@@ -30,5 +31,14 @@ public class GameUI : MonoBehaviour
         {
             playerScoreText.text = player.GetScore().ToString();
         }
+    }
+
+    void UpdateTimeUI()
+    {
+        if (player && playTimeText)
+        {
+            int[] timeArray = player.GetTime();
+            playTimeText.text = timeArray[0] + ":" + timeArray[1];
+        }        
     }
 }   

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -17,7 +19,7 @@ public class UI : MonoBehaviour
     string textToType;
     private TMP_Text description;
     private int activeScreenidx;
-
+    
     void Awake()
     {
         activeScreenidx = SceneManager.GetActiveScene().buildIndex;
@@ -28,7 +30,6 @@ public class UI : MonoBehaviour
         {
             textToType = textToTypeList[1];
         }
-
         description = GetComponent<TMP_Text>();
     }
     void Start()
@@ -44,11 +45,6 @@ public class UI : MonoBehaviour
             description.text += textToType[i];
             yield return new WaitForSeconds(0.05f);
         }
-
-        if (activeScreenidx == 2)
-        {
-            // Trigger Credits Updates
-        }
         yield return null;
     }
 
@@ -56,5 +52,4 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    
 }
