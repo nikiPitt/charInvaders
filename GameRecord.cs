@@ -6,25 +6,29 @@ using UnityEngine;
 
 public class GameRecord : MonoBehaviour
 {
-    private TMP_Text record;
+    public TMP_Text record;
+    public TMP_Text bestrecord;
     private int minutes;
     private int seconds;
+    private int bestplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        record = GetComponent<TMP_Text>();
         RenderRecord();
     }
 
     private void OnEnable()
     {
+        SharedSources.playtimes.Sort();
+        bestplay = (int) SharedSources.playtimes[0];
         seconds = PlayerPrefs.GetInt("seconds");
         minutes = PlayerPrefs.GetInt("minutes");
     }
 
     private void RenderRecord()
     {
-        record.text = minutes + "min " + seconds + "seconds";
+        bestrecord.text = "best record: \n" + bestplay / 60 + "min " + bestplay % 60 + "seconds";
+        record.text = "your record: \n" + minutes + "min " + seconds + "seconds";
     }
 }

@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
     public void UpdateScore(Enemy e)
     {
         _score += e.point;
-        Debug.Log(_score);
     }
 
     public int GetScore()
@@ -59,6 +58,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
+        SharedSources.playtimes.Add(playtime);
         PlayerPrefs.SetInt("seconds", seconds);
         PlayerPrefs.SetInt("minutes", minutes);
     }
