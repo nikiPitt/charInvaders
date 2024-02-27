@@ -17,7 +17,7 @@ public class UI : MonoBehaviour
                                        "We're counting on you to be our hero in the universe!"
                                       };
     string textToType;
-    private TMP_Text description;
+    public TMP_Text description;
     private int activeScreenidx;
     
     void Awake()
@@ -30,11 +30,13 @@ public class UI : MonoBehaviour
         {
             textToType = textToTypeList[1];
         }
-        description = GetComponent<TMP_Text>();
     }
     void Start()
     {
-        StartCoroutine(TypeTextCO());
+        if (description)
+        {
+            StartCoroutine(TypeTextCO());
+        }
     }
 
     IEnumerator TypeTextCO()
